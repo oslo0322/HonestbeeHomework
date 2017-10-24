@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items
   get 'orders' => 'orders#index'
-  post 'pay' => 'orders#pay'
+  get 'pay' => 'orders#pay'
+  post 'pay' => 'orders#purchased'
 
   post 'items/order/:id' => 'items#order'
 

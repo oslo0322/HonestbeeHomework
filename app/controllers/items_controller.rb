@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
                                 :item_id => params[:id],
                                 :status => 'shopping_cart'})
             @order.save
-            redirect_to index
+            redirect_to 'orders'
         else
             redirect_to new_user_session_path, notice: 'You are not logged in.'
         end

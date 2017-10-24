@@ -1,0 +1,27 @@
+<h1>Listing Orders</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Order Time</th>
+  </tr>
+ 
+  <% total = 0 %>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.item.name %></td>
+      <td><%= order.item.price %></td>
+      <td><%= order.created_at %></td>
+    </tr>
+    <% total = total + order.item.price %>
+  <% end %>
+</table>
+<p>Total: <%= total %></p>
+<p>----- Please Fill These Order Information -----</p>
+<%= form_for :purchased do |f| %>
+  Name: <%= f.text_field :name %><br />
+  Phone: <%= f.text_field :phone %><br />
+  Address: <%= f.text_field :address %><br />
+  Payment Type: <%= f.text_field :payment_type %><br />
+  <%= f.submit %>
+<% end %>

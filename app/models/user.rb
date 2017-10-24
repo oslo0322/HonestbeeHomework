@@ -8,4 +8,6 @@ class User < ApplicationRecord
   end
   has_many :orders
   has_many :items, :through => :orders
+  has_many :purchases
+  has_many :orders, :through => :purchases
 end
