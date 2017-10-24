@@ -1,0 +1,21 @@
+<h1>Listing Purchased</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Payment Type</th>
+    <th>User's Email</th>
+  </tr>
+ 
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <td><%= purchase.name %></td>
+      <td><%= purchase.phone %></td>
+      <td><%= purchase.address %></td>
+      <td><%= purchase.payment_type %></td>
+      <td><%= purchase.user.email %></td>
+      <td><%= link_to 'Show', {action: "show", id: purchase.id} %></td>
+    </tr>
+  <% end %>
+</table>

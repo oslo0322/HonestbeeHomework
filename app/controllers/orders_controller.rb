@@ -26,6 +26,12 @@ class OrdersController < ApplicationController
         redirect_to "orders"
     end
 
+    def update
+      @order = Order.find(params[:id])
+      @order.update({:status => params[:status]})
+      redirect_to "/admin/" + @order.purchase_id.to_s
+    end
+
     private
     def purchase_params
         params.require(:purchased).permit(:name, :phone, :address, :payment_type)

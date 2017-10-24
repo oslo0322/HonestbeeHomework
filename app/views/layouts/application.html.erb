@@ -14,6 +14,9 @@
       <%= link_to('修改密碼', edit_registration_path(:user)) %> |
       <%= link_to 'items', controller: 'items' %> |
       <%= link_to 'orders', controller: 'orders' %>
+      <% if current_user.role == 'admin' %>
+        <%= link_to 'admin', controller: 'admin' %>
+      <% end %>
 	  <% else %>
 		  %= link_to('註冊', new_registration_path(:user)) %> |
 		  <%= link_to('登入', new_session_path(:user)) %>

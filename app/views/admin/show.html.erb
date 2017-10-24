@@ -1,0 +1,44 @@
+<p>
+  <strong>Name:</strong>
+  <%= @purchase.name %>
+</p>
+ 
+<p>
+  <strong>Phone:</strong>
+    <%= @purchase.phone %>
+</p>
+<p>
+  <strong>Address:</strong>
+    <%= @purchase.address %>
+</p>
+<p>
+  <strong>Payment Type:</strong>
+    <%= @purchase.payment_type %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+    <%= @purchase.user.email %>
+</p>
+
+<% if not @orders.empty? %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Status</th>
+  </tr>
+
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= order.item.name %></td>
+    <td><%= order.item.price %></td>
+    <td><%= form_tag '/order/'+order.id.to_s, method: :patch do %>
+      <%= select_tag('status', options_for_select(@order_status, order.status)) %>
+      <%= submit_tag "Update" %>
+    <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
