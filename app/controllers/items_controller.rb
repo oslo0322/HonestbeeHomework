@@ -19,6 +19,18 @@ class ItemsController < ApplicationController
         redirect_to @item
     end
 
+    def order
+        if current_user
+            @order = Order.new({:user_id => current_user.id,
+                                :item_id => params[:id],
+                                :status => 'shopping_cart'})
+            @order.save
+            redirect_to index
+        else
+            redirect_to new_user_session_path, notice: 'You are not logged in.'
+        end
+    end
+
     private
     def item_params
         params.require(:item).permit(:name, :price)

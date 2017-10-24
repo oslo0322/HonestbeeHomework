@@ -6,4 +6,6 @@ class User < ApplicationRecord
   def admin?
   	self.role == 'admin'
   end
+  has_many :orders
+  has_many :items, :through => :orders
 end

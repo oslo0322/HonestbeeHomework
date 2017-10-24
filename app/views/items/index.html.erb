@@ -1,15 +1,16 @@
 <h1>Listing articles</h1>
- 
 <table>
   <tr>
     <th>Name</th>
     <th>Price</th>
+    <th>Order</th>
   </tr>
  
   <% @items.each do |item| %>
     <tr>
       <td><%= item.name %></td>
       <td><%= item.price %></td>
+      <td><%= button_to "Buy It!", {action: "order", id: item.id}, remote: true %></td>
     </tr>
   <% end %>
 </table>
