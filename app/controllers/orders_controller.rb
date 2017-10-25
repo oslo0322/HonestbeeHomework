@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
                                :status => 'shopping_cart'})
                        .update_all({:purchase_id => @purchased.id, 
                                     :status => 'paid'})
-        redirect_to "orders"
+        redirect_to "/orders"
     end
 
     def update
