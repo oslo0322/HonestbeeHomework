@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Provide Items API(XML)
 
-Things you may want to cover:
+```
+   items GET    /items(.:format)               items#index
+         POST   /items(.:format)               items#create
+new_item GET    /items/new(.:format)           items#new
+    item GET    /items/:id(.:format)           items#show
+         PATCH  /items/:id(.:format)           items#update
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Only admin can be able to add items.
+- Admin can change the status of each order(might ship the goods in different time), so when admin query by status, might display the same purchased.
