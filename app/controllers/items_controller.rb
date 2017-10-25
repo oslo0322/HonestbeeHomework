@@ -10,13 +10,20 @@ class ItemsController < ApplicationController
     end
     
     def new
+        if not current_user
+            redirect_to new_user_session_path, notice: 'Permission Denied!'
+        end
     end
 
     def create
-        @item = Item.new(item_params)
-        @item.save
+        if current_user and current_user.role == 'admin'
+            @item = Item.new(item_params)
+            @item.save
 
-        redirect_to @item
+            redirect_to @item
+        else
+            redirect_to new_user_session_path, notice: 'Permission Denied!'
+        end
     end
 
     def order
