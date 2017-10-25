@@ -1,4 +1,9 @@
 <h1>Listing Purchased</h1>
+<%= link_to 'paid', controller: 'admin', action: 'index', status: 'paid' %>
+<%= link_to 'shipped', controller: 'admin', action: 'index', status: 'shipped' %>
+<%= link_to 'cancelled', controller: 'admin', action: 'index', status: 'cancelled' %>
+<%= link_to 'all', controller: 'admin' %>
+
 <table>
   <tr>
     <th>Name</th>

@@ -3,9 +3,9 @@ class AdminController < ApplicationController
   before_action :authenticate_admin # 再檢查是否有權限
 
   def index
-    if params[:query]
-      @purchases = Purchase.joins(:order)
-                           .where(orders: {status: params[:query]})
+    if params[:status] and params[:status] != "all"
+      ordered = Order.select("purchase_id").where({status: params[:status]})
+      @purchases = Purchase.where(:id => ordered)
     else
       @purchases = Purchase.all
     end
